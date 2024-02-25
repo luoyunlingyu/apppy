@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyly简易分类程序</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .random-quote {
+            background-color: #fff;
+            padding: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h4 {
+    color: rgba(54, 199, 212, 0.653);
+}
+    </style>
+</head>
+<body>
+    <h1>欢迎使用lyly简易分类程序</h1>
+    
+    <div class="random-quote">
+        <h4 id="quote-content"></h4>
+        <h4 id="quote-from"></h4>
+    </div>
+    
+    <div>
+        <p>本版本为0.1测试版，如有更新，将会在本页面显示</p>
+    </div>
+
+    <script src="https://v1.hitokoto.cn/?encode=json&amp;select=%23content%2C%23from"></script>
+    <script>
+        var quoteContent = document.getElementById("quote-content");
+        var quoteFrom = document.getElementById("quote-from");
+        fetch('https://v1.hitokoto.cn/')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                quoteContent.textContent = data.hitokoto;
+                quoteFrom.textContent = "——" + data.from;
+            });
+    </script>
+</body>
+</html>
